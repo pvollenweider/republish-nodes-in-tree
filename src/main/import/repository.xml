@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<content xmlns:j="http://www.jahia.org/jahia/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0">
+   <modules jcr:primaryType="jnt:modules">
+      <republish-nodes-in-tree j:dependencies="default siteSettings"
+                               j:modulePriority="0"
+                               j:moduleType="module"
+                               j:title="Republish nodes In tree"
+                               jcr:primaryType="jnt:module">
+         <portlets jcr:primaryType="jnt:portletFolder"/>
+         <files jcr:primaryType="jnt:folder"/>
+         <contents jcr:primaryType="jnt:contentFolder"/>
+         <templates j:rootTemplatePath="/base" jcr:primaryType="jnt:templatesFolder">
+            <files jcr:primaryType="jnt:folder"/>
+            <contents jcr:primaryType="jnt:contentFolder"/>
+            <site-settings-base j:view="siteSettings-republish" jcr:primaryType="jnt:template">
+               <republish-panel j:applyOn="jnt:virtualsite" jcr:primaryType="jnt:contentTemplate" j:requiredPermissionNames="republishDashboardAccess">
+                  <pagecontent jcr:primaryType="jnt:contentList">
+                     <republishsitesettingpanel jcr:primaryType="jnt:republishSiteSettingPanel"/>
+                  </pagecontent>
+                  <j:translation_en jcr:language="en"
+                                    jcr:primaryType="jnt:translation"
+                                    jcr:title="Republish"/>
+               </republish-panel>
+            </site-settings-base>
+         </templates>
+      </republish-nodes-in-tree>
+   </modules>
+</content>
