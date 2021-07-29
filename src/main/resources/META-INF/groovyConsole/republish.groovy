@@ -41,6 +41,12 @@ try {
                         //  "touch" the node then add it to publish list
                         try {
                             node.setProperty("jcr:lastModified", new GregorianCalendar());
+                            NodeIterator iteratorI18N = node.getI18Ns();
+                            while (iteratorI18N.hasNext()) {
+                                def nodeI18N = iteratorI18N.nextNode();
+                                nodeI18N.setProperty("jcr:lastModified", new GregorianCalendar());
+                                nodesToAutoPublish.add(nodeI18N.identifier);
+                            }
                             nodesToAutoPublish.add(node.identifier);
                         } catch (javax.jcr.nodetype.ConstraintViolationException e) {
                         }
@@ -64,7 +70,7 @@ try {
                 if (testOnly) {
                     logger.info("Nodes that would be republished (if the test mode is disabled:")
                 } else {
-                    logger.info("Nodes that were republished:")
+                    logger.info("Nodes that were republished in:");
                 }
                 for (String identifier : nodesToAutoPublish) {
                     logger.info("   " + session.getNodeByIdentifier(identifier).getPath());
