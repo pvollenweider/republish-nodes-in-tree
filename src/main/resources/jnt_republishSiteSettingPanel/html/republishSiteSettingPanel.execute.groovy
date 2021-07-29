@@ -41,7 +41,7 @@ try {
             //  "touch" the node then add it to publish list
             try {
                 start.setProperty("jcr:lastModified", new GregorianCalendar());
-                NodeIterator iteratorI18N = node.getI18Ns();
+                NodeIterator iteratorI18N = start.getI18Ns();
                 while (iteratorI18N.hasNext()) {
                     def nodeI18N = iteratorI18N.nextNode();
                     nodeI18N.setProperty("jcr:lastModified", new GregorianCalendar());
