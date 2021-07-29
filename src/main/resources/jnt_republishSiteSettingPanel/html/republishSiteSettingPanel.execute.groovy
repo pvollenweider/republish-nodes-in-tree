@@ -41,6 +41,12 @@ try {
             //  "touch" the node then add it to publish list
             try {
                 start.setProperty("jcr:lastModified", new GregorianCalendar());
+                NodeIterator iteratorI18N = node.getI18Ns();
+                while (iteratorI18N.hasNext()) {
+                    def nodeI18N = iteratorI18N.nextNode();
+                    nodeI18N.setProperty("jcr:lastModified", new GregorianCalendar());
+                    nodesToAutoPublish.add(nodeI18N.identifier);
+                }
                 nodesToAutoPublish.add(start.identifier);
             } catch (javax.jcr.nodetype.ConstraintViolationException e) {
             }
@@ -57,6 +63,12 @@ try {
             try {
                 node.setProperty("jcr:lastModified", new GregorianCalendar());
                 nodesToAutoPublish.add(node.identifier);
+                NodeIterator iteratorI18N = node.getI18Ns();
+                while (iteratorI18N.hasNext()) {
+                    def nodeI18N = iteratorI18N.nextNode();
+                    nodeI18N.setProperty("jcr:lastModified", new GregorianCalendar());
+                    nodesToAutoPublish.add(nodeI18N.identifier);
+                }
             } catch (javax.jcr.nodetype.ConstraintViolationException e) {
             }
         } else {
